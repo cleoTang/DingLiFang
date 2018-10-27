@@ -1,33 +1,39 @@
 <template>
   <div class="dlf">
-    <div class="dlf-header">头部</div>
-    <div class="dlf-content">内容</div>
+    <div class="dlf-header">
+      <header-nav></header-nav>
+    </div>
+    <div class="dlf-content"></div>
+    <router-view></router-view>
     <div class="dlf-tabbar">
       <tabbar></tabbar>
     </div>
-  <router-view></router-view>
   </div>
 </template>
 
 <script>
+import HeaderNav from '@/components/Header';
 import Tabbar from '@/components/Tabbar';
 
 export default {
   name: 'App',
   components: {
     Tabbar,
+    HeaderNav,
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+body{
+  width: 100%;
+  height: 100%;
+}
 .dlf{
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
-  .dlf-header{
-    height: 64px;
-    background: pink;
-  }
   .dlf-content{
     flex: 1;
   }
