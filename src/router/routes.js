@@ -3,6 +3,7 @@ const Mall = () => import('@/pages/Mall');
 const Cart = () => import('@/pages/Cart');
 const Mine = () => import('@/pages/Mine');
 const List = () => import('@/pages/List');
+const Detail = () => import('@/pages/Detail');
 
 export default [{
   path: '/',
@@ -35,5 +36,9 @@ export default [{
   path: '/list/:id',
   name: 'list',
   component: List,
+}, {
+  path: '/detail/:id',
+  name: 'detail',
+  component: Detail,
 },
 ];

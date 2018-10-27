@@ -25,7 +25,6 @@ export default {
         color: #fff;
         font-size: 30px;
         text-align: center;
-        margin-bottom: 20px;
       }
       .mint-swipe-item {
         line-height: 200px;
