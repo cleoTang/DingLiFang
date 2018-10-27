@@ -40,6 +40,7 @@ export default {
   font-size: 18px;
   text-align: center;
   padding-top:10px;
+  background: white;
   i{
     font-size: 25px;
     color: $font-color;

@@ -36,6 +36,7 @@ body{
   flex-direction: column;
   .dlf-content{
     flex: 1;
+    background: #dedede;
   }
   .dlf-tabbar{
     position: absolute;

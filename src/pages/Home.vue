@@ -54,6 +54,7 @@ export default {
 <style  lang="scss">
 @import '../libs/icon/icon.css';
 .dlf-nav{
+  background: white;
   width:100%;
   height:200px;
   display: flex;
