@@ -53,19 +53,28 @@ export default {
 
 <style  lang="scss">
 @import '../libs/icon/icon.css';
-
 .dlf-nav{
   width:100%;
   height:200px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  i{
+  p{
     width:21%;
-    height:60px;
-    background: rgb(248, 236, 238);
-    font-size: 30px;
-    color: #f7d24d;
+    height:80px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    i{
+      width: 100%;
+      height:60px;
+      line-height: 50px;
+      border-radius: 50%;
+      background: rgb(248, 236, 238);
+      font-size: 30px;
+      color: #f7d24d;
+    }
   }
+  
 }
 </style>
