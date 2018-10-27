@@ -27,8 +27,8 @@ export default {
   name: 'detail',
   components: {
     Swiper,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

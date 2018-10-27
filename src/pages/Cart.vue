@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-       <div class="dlf-cart-content-detail">
+      <div class="dlf-cart-content-detail">
         <div>
           <input type="checkbox" />
         </div>
@@ -166,7 +166,7 @@ export default {
           background:#eed268;
           font-size: 16px;
           color: white;
-        } 
+        }
       }
     }
 }

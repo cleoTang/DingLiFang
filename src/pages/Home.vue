@@ -60,6 +60,7 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 10px;
   p{
     width:21%;
     height:80px;
@@ -70,12 +71,11 @@ export default {
       width: 100%;
       height:60px;
       line-height: 50px;
-      border-radius: 50%;
+      border-radius: 40%;
       background: rgb(248, 236, 238);
       font-size: 30px;
       color: #f7d24d;
     }
   }
-  
 }
 </style>

@@ -44,8 +44,8 @@
 
 <script>
 export default {
-
-}
+  name: 'list',
+};
 </script>
 
 <style lang="scss">
@@ -76,7 +76,6 @@ export default {
       width: 47%;
       height: 200px;
       background: white;
-  
       .dlf-list-content-msg-img{
         width: 100%;
         height: 120px;
