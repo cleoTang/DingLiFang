@@ -5,58 +5,59 @@
       <h2>CATEGORY</h2>
     </div>
     <div class="dlf-mall-content">
-      <p>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+     <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+     <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
-      <p>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
-      </p>
+      </router-link>
     </div>
     <div class="dlf-mall-img">
       <p></p>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 

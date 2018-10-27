@@ -2,6 +2,7 @@ const Home = () => import('@/pages/Home');
 const Mall = () => import('@/pages/Mall');
 const Cart = () => import('@/pages/Cart');
 const Mine = () => import('@/pages/Mine');
+const List = () => import('@/pages/List');
 
 export default [{
   path: '/',
@@ -30,5 +31,9 @@ export default [{
   component: Mine,
   isTabbar: true,
   text: '我的',
+}, {
+  path: '/list/:id',
+  name: 'list',
+  component: List,
 },
 ];

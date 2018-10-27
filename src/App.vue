@@ -3,7 +3,6 @@
     <div class="dlf-header">
       <header-nav></header-nav>
     </div>
-    <div class="dlf-content"></div>
     <router-view></router-view>
     <div class="dlf-tabbar">
       <tabbar></tabbar>
@@ -34,10 +33,6 @@ body{
   width: 100%;
   height: 100%;
   flex-direction: column;
-  .dlf-content{
-    flex: 1;
-    background: #dedede;
-  }
   .dlf-tabbar{
     position: absolute;
     bottom: 0;
