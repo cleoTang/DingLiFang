@@ -6,9 +6,11 @@ import 'mint-ui/lib/style.css';
 import App from './App';
 import router from './router';
 import './libs/sass/reset.css';
+import * as ajax from './services';
 
 Vue.config.productionTip = false;
 Vue.use(MintUI);
+Vue.prototype.$ajax = ajax;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

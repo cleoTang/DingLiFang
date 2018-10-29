@@ -1,9 +1,12 @@
 <template>
-  <div class="dlf-detail">
-    <swiper></swiper>
+  <div class="dlf-detail"
+  item="item">
+    <div class="dlf-detail-img">
+      <img :src='item.swiper' alt="图片"/>
+    </div>
     <div class="dlf-detail-desc">
-      <h1>心理学心理学心理学心理学心理学心理学心理学</h1>
-      <h2>￥148</h2>
+      <h1>{{item.title}}</h1>
+      <h2>￥{{item.price}}</h2>
       <p>
         <span>运费：免邮</span>
         <span>已售0件</span>
@@ -12,7 +15,7 @@
     <div class="dlf-detail-type">已选：粉色/20寸</div>
     <div class="dlf-detail-btn">
       <div class="dlf-detail-icon">
-         <i class="icon iconfont icon-cart-normal"></i>
+        <i class="icon iconfont icon-cart-normal"></i>
       </div>
       <div class="dlf-detail-add">加入购物车</div>
       <div class="dlf-detail-buy">立即购买</div>
@@ -28,6 +31,21 @@ export default {
   components: {
     Swiper,
   },
+  data(){
+    return {
+      item: {},
+    };
+  },
+  mounted(){
+    //console.log(this.$route.params.id);
+    this.$ajax.getDetail(this.$route.params.id)
+    .then(resp =>{
+      this.item = resp.data.data;
+    })
+    .catch(err =>{
+      console.log(err);
+    });
+  }
 };
 </script>
 
@@ -37,6 +55,14 @@ export default {
   width: 100%;
   height: 100%;
   background: #f1f0f0;
+  &-img{
+    width: 100%;
+    height: 200px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
   .dlf-detail-desc{
     background: white;
     width: 100%;

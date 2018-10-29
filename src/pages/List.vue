@@ -9,46 +9,45 @@
       </ul>
     </div>
     <div class="dlf-list-content">
-      <div class="dlf-list-content-msg">
+      <router-link
+      class="dlf-list-content-msg"
+      :to='`/detail/${item.id}`'
+      tag="div"
+      v-for="item in todos"
+      :key="item.id"
+      >
         <div class="dlf-list-content-msg-img">
           <img src="" title="图片"/>
         </div>
-        <h2>行李箱行李箱行李箱行李箱行李箱行李</h2>
-        <p>￥148</p>
-      </div>
-      <div class="dlf-list-content-msg">
-        <div class="dlf-list-content-msg-img">
-          <img src="" title="图片"/>
-        </div>
-        <h2>行李箱行李箱行李箱行李箱行李箱行</h2>
-        <p>￥148</p>
-      </div>
-      <div class="dlf-list-content-msg">
-        <div class="dlf-list-content-msg-img">
-          <img src="" title="图片"/>
-        </div>
-        <h2>行李箱行李箱行李箱行李箱行李箱行</h2>
-        <p>￥148</p>
-      </div>
-      <div class="dlf-list-content-msg">
-        <div class="dlf-list-content-msg-img">
-          <img src="" title="图片"/>
-        </div>
-        <h2>行李箱行李箱行李箱行李箱行李箱行</h2>
-        <p>￥148</p>
-      </div>
-    </div>
+        <h2>{{item.title}}</h2>
+        <p>￥{{item.price}}</p>
+      </router-link>
     <router-view></router-view>
+  </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'list',
+  data(){
+    return {
+      todos: [],
+    }
+  },
+  mounted(){
+    this.$ajax.getMallList()
+    .then(resp => {
+      this.todos=resp.data.data;
+    })
+    .catch(err =>{
+      console.log(err);
+    });
+  },
 };
 </script>
 
-<style lang="scss">
+<style  lang="scss">
 .dlf-list {
   width: 100%;
   height: 100%;
@@ -71,6 +70,7 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    flex: 1;
     .dlf-list-content-msg{
       margin-top: 10px;
       width: 47%;
