@@ -17,7 +17,7 @@
       :key="item.id"
       >
         <div class="dlf-list-content-msg-img">
-          <img src="" title="图片"/>
+          <img :src='item.img' title="图片"/>
         </div>
         <h2>{{item.title}}</h2>
         <p>￥{{item.price}}</p>

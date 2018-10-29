@@ -1,46 +1,35 @@
 <template>
   <div class="dlf-cart">
     <div class="dlf-cart-content">
-      <div class="dlf-cart-content-detail">
+      <div 
+      class="dlf-cart-content-detail"
+      v-for='item in todos'
+      :key='item.id'>
         <div>
-          <input type="checkbox" />
+          <input 
+          type="checkbox"
+          :checked='checked(item.id)' 
+          @change="onCheckedChange(item.id)"/>
         </div>
         <div class="dlf-cart-content-detail-img">
-          <img src="" alt="图片"/>
+          <img src='' alt="图片"/>
         </div>
         <div class="dlf-cart-content-detail-desc">
           <div class="dlf-cart-content-detail-desc-title">
-            <h1>苹果苹果苹果苹果苹果苹果苹果苹果</h1>
-            <h2>苹果苹果苹果苹果苹果苹果苹果苹果</h2>
+            <h1>{{item.title}}</h1>
+            <h2>{{item.desc}}</h2>
           </div>
           <div class="dlf-cart-content-detail-desc-msg">
-            <div class="detail-desc-msg-price">￥1159</div>
+            <div class="detail-desc-msg-price">￥{{item.price}}</div>
             <div class="detail-desc-msg-number">
-              <span class="detail-desc-msg-number-add">-</span>
-              <span class="detail-desc-msg-number-count">10</span>
-              <span class="detail-desc-msg-number-reduce">+</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="dlf-cart-content-detail">
-        <div>
-          <input type="checkbox" />
-        </div>
-        <div class="dlf-cart-content-detail-img">
-          <img src="" alt="图片"/>
-        </div>
-        <div class="dlf-cart-content-detail-desc">
-          <div class="dlf-cart-content-detail-desc-title">
-            <h1>苹果苹果苹果苹果苹果苹果苹果苹果</h1>
-            <h2>苹苹果苹果苹果苹果苹果</h2>
-          </div>
-          <div class="dlf-cart-content-detail-desc-msg">
-            <div class="detail-desc-msg-price">￥1159</div>
-            <div class="detail-desc-msg-number">
-              <span class="detail-desc-msg-number-add">-</span>
-              <span class="detail-desc-msg-number-count">10</span>
-              <span class="detail-desc-msg-number-reduce">+</span>
+              <span 
+              class="detail-desc-msg-number-add"
+              @click="reduce(item.id)"
+              >-</span>
+              <span class="detail-desc-msg-number-count">{{item.count}}</span>
+              <span class="detail-desc-msg-number-reduce" 
+              @click="addCount(item.id)"
+              >+</span>
             </div>
           </div>
         </div>
@@ -48,11 +37,14 @@
       <div class="dlf-cart-content-more">点击或者上拉加载更多</div>
     </div>
     <div class="dlf-cart-footer">
-      <div class="dlf-cart-footer-check"><input type="checkbox" />全选</div>
-      <div class="dlf-cart-footer-total">总计：<span>0</span></div>
-      <div class="dlf-cart-footer-btn">
-        <button>结算（<span>0</span>）</button>
-      </div>
+      <div 
+      class="dlf-cart-footer-check">
+        <input type="checkbox" 
+        v-model="isAllChecked" />
+        全选
+        </div>
+      <div class="dlf-cart-footer-total">总计：<span>{{checkedTotalPrice}}</span></div>
+      <div class="dlf-cart-footer-btn">结算({{totalCount}})</div>
     </div>
   </div>
 </template>
@@ -60,6 +52,87 @@
 <script>
 export default {
   name: 'cart',
+  data(){
+    return {
+      todos: [{
+      id: 1,
+      title: '大家非常记号记号划的飞机塑钢',
+      desc: 'duihj环境的好处火箭火箭客场',
+      price: 123,
+      count: 10
+    },{
+      id: 2,
+      title: '大家非常记号记号划的飞机塑钢',
+      desc: 'duihj环境的好处火箭火箭客场',
+      price: 125,
+      count: 1
+    },],
+    checkedItems: [],
+    };
+  },
+  computed: {
+    isAllChecked: {
+      get() {
+        return this.checkedItems.length === this.todos.length;
+      },
+      set(val) {
+        if(val) {
+          this.checkedItems = this.todos.map(item => item.id);
+        } else {
+          this.checkedItems = [];
+        }
+      }
+    },
+    totalCount(){
+      return this.todos.reduce((result, item)=>{
+          if (this.checkedItems.includes(item.id)) {
+            result += item.count;
+          }
+          return result
+        }, 0)
+    },
+    checkedTotalPrice() {
+      return this.todos.reduce((result, item)=>{
+        if (this.checkedItems.includes(item.id)) {
+          result += item.price * item.count;
+        }
+        return result
+      }, 0)
+    },
+  },
+  methods: {
+    addCount(id){
+      return this.todos.map(item =>{
+        if(item.id===id){
+          item.count +=1;
+        }
+        return item
+      })
+    },
+    reduce(id){
+      return this.todos.map(item =>{
+        if(item.id===id){
+          if(item.count <=1){
+            alert("宝贝已经不能减少了~~~");
+            item.count ==1;
+          }else{
+            item.count -=1;
+          }
+        }
+        return item
+      })
+    },
+    onCheckedChange(id) {
+        if (this.checkedItems.includes(id)) {
+          this.checkedItems = this.checkedItems.filter(item => item !== id)
+        } else {
+          this.checkedItems.push(id)
+        }
+    },
+    checked(id) {
+      return this.checkedItems.includes(id);
+    },
+  },
 };
 </script>
 
@@ -159,14 +232,10 @@ export default {
       .dlf-cart-footer-btn{
         width: 25%;
         height:50px;
-        button{
-          border: none;
-          width:100%;
-          height: 100%;
-          background:#eed268;
-          font-size: 16px;
-          color: white;
-        }
+        background:#eed268;
+        font-size: 16px;
+        color: white;
+        text-align: center;
       }
     }
 }
