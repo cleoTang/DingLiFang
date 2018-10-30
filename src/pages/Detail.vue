@@ -17,35 +17,37 @@
       <div class="dlf-detail-icon">
         <i class="icon iconfont icon-cart-normal"></i>
       </div>
-      <div class="dlf-detail-add">加入购物车</div>
+      <div class="dlf-detail-add" @click="addToCart(item)">加入购物车</div>
       <div class="dlf-detail-buy">立即购买</div>
     </div>
   </div>
 </template>
 
 <script>
-import Swiper from '@/components/Swiper';
+import {
+  mapMutations,
+} from 'vuex';
 
 export default {
   name: 'detail',
-  components: {
-    Swiper,
-  },
   data(){
     return {
       item: {},
     };
   },
   mounted(){
-    //console.log(this.$route.params.id);
     this.$ajax.getDetail(this.$route.params.id)
-    .then(resp =>{
+    .then(resp => {
+      resp.data.data.id=this.$route.params.id;
       this.item = resp.data.data;
     })
     .catch(err =>{
       console.log(err);
     });
-  }
+  },
+  methods: {
+    ...mapMutations(['addToCart']),
+  },
 };
 </script>
 

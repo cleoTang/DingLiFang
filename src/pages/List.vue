@@ -28,6 +28,9 @@
 </template>
 
 <script>
+// import {
+//   mapActions,
+// } from 'vuex';
 export default {
   name: 'list',
   data(){
@@ -35,15 +38,19 @@ export default {
       todos: [],
     }
   },
-  mounted(){
+  mounted() {
     this.$ajax.getMallList()
-    .then(resp => {
-      this.todos=resp.data.data;
-    })
-    .catch(err =>{
-      console.log(err);
-    });
+      .then(resp => {
+        this.todos=resp.data.data;
+      })
+      .catch(err =>{
+        console.log(err);
+      });
+      console.log(this);
   },
+  // computed: {
+  //   ...mapActions(['displayTabbar'])
+  // },
 };
 </script>
 
@@ -91,6 +98,7 @@ export default {
         padding-left: 10px;
         padding-top: 5px;
         line-height: 20px;
+        font-size: 15px;
       }
       p{
         width: 100%;

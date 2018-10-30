@@ -10,11 +10,7 @@ aside, figure, footer, header, menu, nav,
 section, time, mark, audio, video, details, summary {
 	margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
 	font-weight: normal;
-	vertical-align: baseline;
-	background: transparent;
 	box-sizing: border-box;
 }
 ul {list-style: none;}

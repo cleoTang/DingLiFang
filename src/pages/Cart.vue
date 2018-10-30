@@ -8,7 +8,7 @@
         <div>
           <input 
           type="checkbox"
-          :checked='checked(item.id)' 
+          :checked='checked(item.id)'
           @change="onCheckedChange(item.id)"/>
         </div>
         <div class="dlf-cart-content-detail-img">
@@ -22,13 +22,13 @@
           <div class="dlf-cart-content-detail-desc-msg">
             <div class="detail-desc-msg-price">￥{{item.price}}</div>
             <div class="detail-desc-msg-number">
-              <span 
+              <span
               class="detail-desc-msg-number-add"
-              @click="reduce(item.id)"
+              @click="decrement(item.id)"
               >-</span>
               <span class="detail-desc-msg-number-count">{{item.count}}</span>
               <span class="detail-desc-msg-number-reduce" 
-              @click="addCount(item.id)"
+              @click="increment(item.id)"
               >+</span>
             </div>
           </div>
@@ -50,84 +50,57 @@
 </template>
 
 <script>
+import {
+  mapState,
+  mapMutations,
+} from 'vuex';
+
 export default {
   name: 'cart',
   data(){
     return {
-      todos: [{
-      id: 1,
-      title: '大家非常记号记号划的飞机塑钢',
-      desc: 'duihj环境的好处火箭火箭客场',
-      price: 123,
-      count: 10
-    },{
-      id: 2,
-      title: '大家非常记号记号划的飞机塑钢',
-      desc: 'duihj环境的好处火箭火箭客场',
-      price: 125,
-      count: 1
-    },],
     checkedItems: [],
     };
   },
   computed: {
+    ...mapState(['todos']),
     isAllChecked: {
       get() {
         return this.checkedItems.length === this.todos.length;
       },
       set(val) {
-        if(val) {
+        if (val){
           this.checkedItems = this.todos.map(item => item.id);
         } else {
           this.checkedItems = [];
         }
-      }
+      },
     },
     totalCount(){
-      return this.todos.reduce((result, item)=>{
-          if (this.checkedItems.includes(item.id)) {
-            result += item.count;
-          }
-          return result
-        }, 0)
+      return this.todos.reduce((result, item) => {
+        if (this.checkedItems.includes(item.id)) {
+          result += item.count;
+        }
+        return result;
+      }, 0);
     },
     checkedTotalPrice() {
-      return this.todos.reduce((result, item)=>{
+      return this.todos.reduce((result, item) => {
         if (this.checkedItems.includes(item.id)) {
           result += item.price * item.count;
         }
-        return result
-      }, 0)
+        return result;
+      }, 0);
     },
   },
   methods: {
-    addCount(id){
-      return this.todos.map(item =>{
-        if(item.id===id){
-          item.count +=1;
-        }
-        return item
-      })
-    },
-    reduce(id){
-      return this.todos.map(item =>{
-        if(item.id===id){
-          if(item.count <=1){
-            alert("宝贝已经不能减少了~~~");
-            item.count ==1;
-          }else{
-            item.count -=1;
-          }
-        }
-        return item
-      })
-    },
+    ...mapMutations(['increment', 'decrement']),
     onCheckedChange(id) {
-        if (this.checkedItems.includes(id)) {
-          this.checkedItems = this.checkedItems.filter(item => item !== id)
-        } else {
-          this.checkedItems.push(id)
-        }
+      if (this.checkedItems.includes(id)) {
+        this.checkedItems = this.checkedItems.filter(item => item !== id);
+      } else {
+        this.checkedItems.push(id);
+    }
     },
     checked(id) {
       return this.checkedItems.includes(id);
@@ -218,7 +191,7 @@ export default {
       height: 50px;
       background: white;
       line-height: 50px;
-      position: absolute;
+      position: fixed;
       bottom: 64px;
       left: 0;
       right: 0;

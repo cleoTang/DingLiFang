@@ -7,7 +7,7 @@
       <router-view></router-view>
     </div>
     <div class="dlf-tabbar1">
-      <tabbar></tabbar>
+      <tabbar v-if='istabbar'></tabbar>
     </div>
   </div>
 </template>
@@ -22,11 +22,17 @@ export default {
     Tabbar,
     HeaderNav,
   },
+  data(){
+    return {istabbar: this.$store.state.isTabbar};
+  },
+  mounted(){
+    console.log(this.istabbar);
+  }
 };
 </script>
 
 <style  lang="scss">
-body{
+body,html{
   width: 100%;
   height: 100%;
 }
@@ -40,14 +46,10 @@ body{
   }
   &-content{
     flex: 1;
+    overflow-y: auto;
   }
   &-tabbar1{
     height: 64px;
-    // position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
   }
 }
 </style>

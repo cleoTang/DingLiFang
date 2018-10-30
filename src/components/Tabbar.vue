@@ -7,6 +7,10 @@
       tag='div'
       :id="route.name">
       <div>
+        <span 
+        class="dlf-tabbar-badge"
+        v-if="route.path === '/cart'"
+        >{{totalCount | maxNumber}}</span>
         <i :class="`icon iconfont icon-${route.name}-normal`"></i>
         <!-- <i :class="`icon iconfont icon-${route.name}-active`" v-show="true"></i> -->
       </div>
@@ -17,6 +21,9 @@
 
 <script>
 import routes from '@/router/routes';
+import {
+  mapGetters,
+} from 'vuex';
 
 export default {
   name: 'tabbar',
@@ -24,6 +31,14 @@ export default {
     return {
       routes: routes.filter(item => item.isTabbar === true),
     };
+  },
+  computed: {
+    ...mapGetters(['totalCount']),
+  },
+  filters: {
+    maxNumber(n) {
+      return n > 99 ? '99+' : n;
+    },
   },
 };
 </script>
@@ -41,6 +56,19 @@ export default {
   text-align: center;
   padding-top:10px;
   background: white;
+  &-badge{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+    color: white;
+    line-height: 25px;
+    position: absolute;
+    bottom: 38px;
+    left: 242px;
+    font-size: 14px;
+  }
   i{
     font-size: 25px;
     color: $font-color;

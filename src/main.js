@@ -7,6 +7,7 @@ import App from './App';
 import router from './router';
 import './libs/sass/reset.css';
 import * as ajax from './services';
+import store from './store';
 
 Vue.config.productionTip = false;
 Vue.use(MintUI);
@@ -15,6 +16,7 @@ Vue.prototype.$ajax = ajax;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
 });
