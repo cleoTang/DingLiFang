@@ -9,6 +9,20 @@ import './libs/sass/reset.css';
 import * as ajax from './services';
 import store from './store';
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.authRequired) {
+    if (!store.state.isLogin) {
+      next({
+        name: 'login',
+        params: { to },
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 Vue.config.productionTip = false;
 Vue.use(MintUI);
 Vue.prototype.$ajax = ajax;

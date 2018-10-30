@@ -1,10 +1,10 @@
 <template>
   <div class="dlf-mine">
     <div class="dlf-content">
-      <div class='dlf-content-login'>
+      <router-link to='/login' tag='div' class='dlf-content-login'>
         <p class='dlf-content-login-img'></p>
-        <p>登录/注册</p>
-      </div>
+        <p >登录/注册</p>
+      </router-link>
       <div class="dlf-content-list">
         <div class="dlf-content-list-title">
           <p>我的订单</p>

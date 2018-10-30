@@ -54,15 +54,15 @@ export default {
 };
 </script>
 
-<style  lang="scss">
+<style scoped lang="scss">
 .dlf-list {
   width: 100%;
   height: 100%;
-  background: #e6e4e4;
+  background: rgb(240, 239, 239);
   .dlf-list-nav{
     width: 100%;
     height: 40px;
-    background: pink;
+    background: white;
     line-height: 40px;
     ul{
       display: flex;

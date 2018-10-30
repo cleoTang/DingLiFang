@@ -72,10 +72,11 @@ export default {
 
 .dlf-mall{
   height:100%;
+  background: white;
   .dlf-mall-title{
     width:100%;
     height:60px;
-    margin-top:30px;
+    padding-top:30px;
     margin-bottom: 20px;
     h2{
       height:30px;
@@ -88,6 +89,7 @@ export default {
     height:300px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 50px;
     justify-content: space-around;
     p{
       width:24%;

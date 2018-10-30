@@ -12,12 +12,12 @@
         <span>已售0件</span>
       </p>
     </div>
-    <div class="dlf-detail-type">已选：粉色/20寸</div>
+    <div class="dlf-detail-type">已选：粉色/20寸 </div>
     <div class="dlf-detail-btn">
       <div class="dlf-detail-icon">
         <i class="icon iconfont icon-cart-normal"></i>
       </div>
-      <div class="dlf-detail-add" @click="addToCart(item)">加入购物车</div>
+      <div class="dlf-detail-add" @click="addtocart(item)">加入购物车</div>
       <div class="dlf-detail-buy">立即购买</div>
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
     });
   },
   methods: {
-    ...mapMutations(['addToCart']),
+    ...mapMutations(['addtocart']),
   },
 };
 </script>

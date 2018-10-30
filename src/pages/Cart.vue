@@ -12,7 +12,7 @@
           @change="onCheckedChange(item.id)"/>
         </div>
         <div class="dlf-cart-content-detail-img">
-          <img src='' alt="图片"/>
+          <img :src='item.swiper' alt="图片"/>
         </div>
         <div class="dlf-cart-content-detail-desc">
           <div class="dlf-cart-content-detail-desc-title">
@@ -43,7 +43,7 @@
         v-model="isAllChecked" />
         全选
         </div>
-      <div class="dlf-cart-footer-total">总计：<span>{{checkedTotalPrice}}</span></div>
+      <div class="dlf-cart-footer-total">总计：<span>{{checkedTotalPrice.toFixed(2)}}</span></div>
       <div class="dlf-cart-footer-btn">结算({{totalCount}})</div>
     </div>
   </div>
@@ -113,7 +113,7 @@ export default {
 .dlf-cart{
   width:100%;
   height:100%;
-  background: rgb(240, 237, 238);
+  background: rgb(235, 234, 234);
   .dlf-cart-content{
     .dlf-cart-content-more{
       width: 100%;
@@ -128,10 +128,8 @@ export default {
       display: flex;
       padding:20px 10px;
       .dlf-cart-content-detail-img{
-        height:100px;
+        height:80px;
         width:30%;
-        border:1px solid;
-        padding:10px;
         margin-left: 10px;
         margin-right: 10px;
         img{
@@ -200,7 +198,8 @@ export default {
         width: 50%;
       }
       .dlf-cart-footer-total{
-        width:25%;
+        width:35%;
+        height: 100%;
       }
       .dlf-cart-footer-btn{
         width: 25%;
