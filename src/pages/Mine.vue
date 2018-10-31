@@ -4,9 +4,21 @@
       <span>我的</span>
     </div>
     <div class="dlf-content">
-      <router-link to='/login' tag='div' class='dlf-content-login'>
-        <p class='dlf-content-login-img'></p>
-        <p >登录/注册</p>
+      <router-link 
+      to='/login' 
+      tag='div' 
+      class='dlf-content-login'
+      >
+        <div v-if='isToken' class='dlf-content-login-a'>
+          <p class='dlf-content-login-a-img'>
+            <img src='http://img4.duitang.com/uploads/item/201602/06/20160206025901_JtzEC.thumb.700_0.jpeg' alt="头像"/>
+          </p>
+          <p >欢迎登陆~~~~</p>
+        </div>
+        <div v-else class='dlf-content-login-a'>
+          <p class='dlf-content-login-a-img'></p>
+          <p >登录/注册</p>
+        </div>
       </router-link>
       <div class="dlf-content-list">
         <div class="dlf-content-list-title">
@@ -61,6 +73,16 @@
 <script>
 export default {
   name: 'mine',
+  data() {
+    return {
+      token: '',
+    };
+  },
+  computed: {
+    isToken() {
+      return this.token=window.localStorage.getItem('token');
+    },
+  }
 };
 </script>
 
@@ -85,20 +107,28 @@ export default {
       width: 100%;
       height: 74px;
       background: white;
-      padding: 0 10px;
       line-height: 74px;
-      display: flex;
       margin-bottom: 10px;
-      &-img{
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #f0f0f0;
-        margin-top: 10px;
-      }
-      p{
-        margin-right: 10px;
-      }
+      &-a{
+        position: fixed;
+        top:64px;
+        left: 10px;
+        display: flex;
+        &-img{
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: #f0f0f0;
+          margin-top: 10px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        p{
+          margin-right: 10px;
+        }
+        }
     }
     &-list{
       width: 100%;

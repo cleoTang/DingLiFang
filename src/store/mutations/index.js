@@ -48,7 +48,6 @@ export default {
   },
   [types.SHOWBAGE](state, id) {
     const isBage = state.todos.some(item => item.id == id);
-    console.log("123" ,isBage);
     return isBage;
   },
 };

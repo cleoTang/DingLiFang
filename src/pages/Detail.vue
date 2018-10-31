@@ -18,12 +18,12 @@
     </div>
     <div class="dlf-detail-type">已选：粉色/20寸 </div>
     <div class="dlf-detail-btn">
-      <div class="dlf-detail-icon">
+      <router-link tag='div' to='/cart' class="dlf-detail-icon">
         <span 
         class="dlf-detail-icon-badge"
         >{{todos.length}}</span>
         <i class="icon iconfont icon-cart-normal"></i>
-      </div>
+      </router-link>
       <div class="dlf-detail-add" @click="addtocart(item)">加入购物车</div>
       <div class="dlf-detail-buy">立即购买</div>
     </div>

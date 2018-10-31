@@ -9,13 +9,19 @@ import './libs/sass/reset.css';
 import * as ajax from './services';
 import store from './store';
 
+const token = window.localStorage.getItem('token');
+console.log(token)
 router.beforeEach((to, from, next) => {
-  if (to.meta.authRequired) {
-    if (!store.state.isLogin) {
-      next({
-        name: 'login',
-        params: { to },
-      });
+  if (token === '') {
+    if (to.meta.authRequired) {
+      if (!store.state.isLogin) {
+        next({
+          name: 'login',
+          params: { to },
+        });
+      } else {
+        next();
+      }
     } else {
       next();
     }

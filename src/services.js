@@ -18,3 +18,5 @@ ajax.interceptors.response.use((resp) => {
 export const  getMallList = () => {return ajax.get('/hotpot/v1/pt'); };
 
 export const  getDetail = (id) => {return ajax.get(`/hotpot/v1/detail/:${id}`); };
+
+export const login1 = params => ajax.post('/hotpot/v1/login', params);
