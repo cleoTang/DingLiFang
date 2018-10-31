@@ -7,7 +7,7 @@
       <router-view></router-view>
     </div>
     <div class="dlf-tabbar1">
-      <tabbar v-if='istabbar'></tabbar>
+      <tabbar></tabbar>
     </div>
   </div>
 </template>
@@ -47,9 +47,6 @@ body,html{
   &-content{
     flex: 1;
     overflow-y: auto;
-  }
-  &-tabbar1{
-    height: 64px;
   }
 }
 </style>

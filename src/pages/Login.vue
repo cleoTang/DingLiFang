@@ -7,15 +7,13 @@
     <div class="dlf-login-input">
       <mt-field label="用户名" 
       placeholder="请输入用户名" 
-      v-model="username"
       state='error'
       ></mt-field>
       <mt-field label="密码" 
       placeholder="请输入密码" 
-      type="password" 
-      v-model="password"></mt-field>
+      type="password"></mt-field>
     </div>
-    <div class="dlf-login-btn" @click="login">登录{{isLogin}}</div>
+    <div class="dlf-login-btn" @click="login">登录</div>
     <p class="dlf-login-info">
       <span>忘记密码</span>
       <span>新用户注册</span>
@@ -27,6 +25,7 @@
 import {
   mapState,
   mapActions,
+  mapMutations,
 } from 'vuex';
 
 export default {
@@ -35,7 +34,8 @@ export default {
     ...mapState(['isLogin']),
   },
   methods: {
-    ...mapActions(['login']),
+   // ...mapActions(['login']),
+    ...mapMutations(['login']),
   },
   watch: {
     isLogin(n) {

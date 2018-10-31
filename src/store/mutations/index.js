@@ -43,4 +43,7 @@ export default {
     window.localStorage.setItem('nw-todo', JSON.stringify(state.todos));
     return state.todos;
   },
+  [types.LOGIN](state) {
+    state.isLogin = true;
+  },
 };
