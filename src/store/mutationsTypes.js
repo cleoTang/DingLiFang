@@ -4,5 +4,6 @@ export default {
   ADDTOCART: 'addtocart',
   LOGIN: 'login',
   SHOWBAGE: 'showbage',
+  DELETECART: 'deletecart',
 };
 

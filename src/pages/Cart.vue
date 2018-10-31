@@ -7,7 +7,11 @@
       <div 
       class="dlf-cart-content-detail"
       v-for='item in todos'
-      :key='item.id'>
+      :key='item.id'
+      @touchstart="onItemTouchStart(item.id)"
+      @touchend="onItemTouchEnd"
+      v-if='todos.length ===0'
+      >
         <div>
           <input 
           type="checkbox"
@@ -36,6 +40,12 @@
             </div>
           </div>
         </div>
+      </div>
+      <div 
+      class="dlf-cart-content-none"
+      v-else
+      >
+        加入购物车
       </div>
       <div class="dlf-cart-content-more">点击或者上拉加载更多</div>
     </div>
@@ -97,7 +107,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['increment', 'decrement']),
+    ...mapMutations(['increment', 'decrement','deletecart']),
     onCheckedChange(id) {
       if (this.checkedItems.includes(id)) {
         this.checkedItems = this.checkedItems.filter(item => item !== id);
@@ -107,6 +117,23 @@ export default {
     },
     checked(id) {
       return this.checkedItems.includes(id);
+    },
+    onItemTouchStart(id) {
+      this.timer = setTimeout(() => {
+        this.$messagebox({
+          title: '确认删除',
+          message: `您确定要删除${id}吗?`,
+          showCancelButton: true,
+        }).then((action) => {
+          if (action === 'confirm') {
+            this.deletecart(id);
+            this.$toast('删除成功');
+          }
+        });
+      }, 2000);
+    },
+    onItemTouchEnd() {
+      clearTimeout(this.timer);
     },
   },
 };

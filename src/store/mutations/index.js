@@ -50,4 +50,8 @@ export default {
     const isBage = state.todos.some(item => item.id == id);
     return isBage;
   },
+  [types.DELETECART](state, id) {
+    state.todos = state.todos.filter(item => item.id !== id);
+    window.localStorage.setItem('nw-todo', JSON.stringify(state.todos));
+  },
 };
