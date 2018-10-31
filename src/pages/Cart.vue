@@ -1,5 +1,8 @@
 <template>
   <div class="dlf-cart">
+    <div class="dlf-cart-header">
+      <span>购物车</span>
+    </div>
     <div class="dlf-cart-content">
       <div 
       class="dlf-cart-content-detail"
@@ -114,6 +117,15 @@ export default {
   width:100%;
   height:100%;
   background: rgb(235, 234, 234);
+  &-header{
+    width: 100%;
+    height: 64px;
+    background: #eed268;
+    line-height: 64px;
+    padding-left: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
   .dlf-cart-content{
     .dlf-cart-content-more{
       width: 100%;

@@ -1,5 +1,9 @@
 <template>
   <div class="dlf-list">
+    <div class="dlf-list-header">
+      <P @click="toPath">返回</P>
+      <span>礼品箱包</span>
+    </div>
     <div class="dlf-list-nav">
       <ul>
         <li>销量</li>
@@ -46,11 +50,12 @@ export default {
       .catch(err =>{
         console.log(err);
       });
-      console.log(this);
   },
-  // computed: {
-  //   ...mapActions(['displayTabbar'])
-  // },
+  methods: {
+    toPath(){
+      this.$router.go('-1');
+    }
+  },
 };
 </script>
 
@@ -59,6 +64,18 @@ export default {
   width: 100%;
   height: 100%;
   background: rgb(240, 239, 239);
+  &-header{
+    height: 64px;
+    width: 100%;
+    background: #eed268;
+    line-height: 64px;
+    display: flex;
+    padding-left: 14px;
+    font-size: 20px;
+    span{
+      margin-left: 30%;
+    }
+  }
   .dlf-list-nav{
     width: 100%;
     height: 40px;

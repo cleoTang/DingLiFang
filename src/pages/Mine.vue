@@ -1,5 +1,8 @@
 <template>
   <div class="dlf-mine">
+    <div class="dlf-mine-header">
+      <span>我的</span>
+    </div>
     <div class="dlf-content">
       <router-link to='/login' tag='div' class='dlf-content-login'>
         <p class='dlf-content-login-img'></p>
@@ -67,6 +70,15 @@ export default {
   width: 100%;
   height: 100%;
   background: #f0f0f0;
+  &-header{
+    width: 100%;
+    height: 64px;
+    background: #eed268;
+    line-height: 64px;
+    padding-left: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
   .dlf-content{
     width: 100%;
     &-login{

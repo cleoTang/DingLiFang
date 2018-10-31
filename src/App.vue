@@ -1,13 +1,17 @@
 <template>
   <div class="dlf">
     <div class="dlf-header1">
-      <header-nav></header-nav>
+      <header-nav
+      v-if="showTabbar === '/home' || showTabbar === '/mall'"
+      ></header-nav>
     </div>
     <div class="dlf-content">
       <router-view></router-view>
     </div>
     <div class="dlf-tabbar1">
-      <tabbar></tabbar>
+      <tabbar
+      v-if="showTabbar === '/home' || showTabbar === '/mall' || showTabbar === '/cart' || showTabbar === '/mine'"
+      ></tabbar>
     </div>
   </div>
 </template>
@@ -22,11 +26,16 @@ export default {
     Tabbar,
     HeaderNav,
   },
-  data(){
-    return {istabbar: this.$store.state.isTabbar};
+  data() {
+    return{
+      isTabbar: '',
+    };
   },
-  mounted(){
-    console.log(this.istabbar);
+  computed: {
+    showTabbar() {
+      this.isTabbar=this.$route.path;
+      return this.isTabbar;
+    },
   },
 };
 </script>
@@ -41,9 +50,6 @@ body,html{
   width: 100%;
   height: 100%;
   flex-direction: column;
-  &-header1{
-    height: 64px;
-  }
   &-content{
     flex: 1;
     overflow-y: auto;

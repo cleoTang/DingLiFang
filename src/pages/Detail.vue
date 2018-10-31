@@ -1,6 +1,10 @@
 <template>
   <div class="dlf-detail"
   item="item">
+    <div class="dlf-detail-header">
+      <P @click="toPath">返回</P>
+      <span>商品详情</span>
+    </div>
     <div class="dlf-detail-img">
       <img :src='item.swiper' alt="图片"/>
     </div>
@@ -15,6 +19,9 @@
     <div class="dlf-detail-type">已选：粉色/20寸 </div>
     <div class="dlf-detail-btn">
       <div class="dlf-detail-icon">
+        <span 
+        class="dlf-detail-icon-badge"
+        >{{todos.length}}</span>
         <i class="icon iconfont icon-cart-normal"></i>
       </div>
       <div class="dlf-detail-add" @click="addtocart(item)">加入购物车</div>
@@ -26,6 +33,7 @@
 <script>
 import {
   mapMutations,
+  mapState,
 } from 'vuex';
 
 export default {
@@ -46,7 +54,13 @@ export default {
     });
   },
   methods: {
-    ...mapMutations(['addtocart']),
+    ...mapMutations(['addtocart','showbage']),
+    toPath(){
+      this.$router.go('-1');
+    }
+  },
+  computed: {
+    ...mapState(['todos']),
   },
 };
 </script>
@@ -57,6 +71,18 @@ export default {
   width: 100%;
   height: 100%;
   background: #f1f0f0;
+  &-header{
+    height: 64px;
+    width: 100%;
+    background: #eed268;
+    line-height: 64px;
+    display: flex;
+    padding-left: 14px;
+    font-size: 20px;
+    span{
+      margin-left: 30%;
+    }
+  }
   &-img{
     width: 100%;
     height: 200px;
@@ -106,13 +132,26 @@ export default {
     font-size: 20px;
     background: white;
     position: absolute;
-    bottom: 64px;
+    bottom:0;
     left: 0;
     right: 0;
     .dlf-detail-icon{
       width: 20%;
       i{
         font-size: 30px;
+      }
+      &-badge{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+        color: white;
+        line-height: 20px;
+        position: absolute;
+        bottom: 38px;
+        left: 42px;
+        font-size: 14px;
       }
     }
     .dlf-detail-add{

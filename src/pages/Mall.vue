@@ -9,10 +9,6 @@
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
       </router-link>
-     <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
       <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
@@ -21,7 +17,11 @@
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
       </router-link>
-     <router-link tag="p" to='/list/1'>
+      <router-link tag="p" to='/list/1'>
+        <i class="icon iconfont icon-jiushuishouru"></i>
+        <span>礼品</span>
+      </router-link>
+      <router-link tag="p" to='/list/1'>
         <i class="icon iconfont icon-jiushuishouru"></i>
         <span>礼品</span>
       </router-link>
