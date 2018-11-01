@@ -3,21 +3,22 @@
     <div class="dlf-cart-header">
       <span>购物车</span>
     </div>
-    <div class="dlf-cart-content">
+    <div 
+    v-if='todos.length >0'
+    class="dlf-cart-content">
       <div 
       class="dlf-cart-content-detail"
       v-for='item in todos'
       :key='item.id'
       @touchstart="onItemTouchStart(item.id)"
       @touchend="onItemTouchEnd"
-      v-if='todos.length ===0'
       >
-        <div>
+        <label class="dlf-cart-content-detail-input">
           <input 
-          type="checkbox"
+          type="radio"
           :checked='checked(item.id)'
-          @change="onCheckedChange(item.id)"/>
-        </div>
+          @change="onCheckedChange(item.id)"><span></span>
+        </label>
         <div class="dlf-cart-content-detail-img">
           <img :src='item.swiper' alt="图片"/>
         </div>
@@ -41,23 +42,21 @@
           </div>
         </div>
       </div>
-      <div 
-      class="dlf-cart-content-none"
-      v-else
-      >
-        加入购物车
-      </div>
-      <div class="dlf-cart-content-more">点击或者上拉加载更多</div>
-    </div>
     <div class="dlf-cart-footer">
-      <div 
-      class="dlf-cart-footer-check">
-        <input type="checkbox" 
-        v-model="isAllChecked" />
-        全选
-        </div>
-      <div class="dlf-cart-footer-total">总计：<span>{{checkedTotalPrice.toFixed(2)}}</span></div>
-      <div class="dlf-cart-footer-btn">结算({{totalCount}})</div>
+    <label class="dlf-cart-footer-check">
+      <input type="checkbox" 
+      v-model="isAllChecked" />
+      <span>全选</span>
+    </label>
+    <div class="dlf-cart-footer-total">总计：<span>{{checkedTotalPrice.toFixed(2)}}</span></div>
+    <div class="dlf-cart-footer-btn">结算({{totalCount}})</div>
+    </div>
+    </div>
+    <div class="dlf-cart-content-none"
+      v-if="todos.length===0">
+        <img src="http://pic.51yuansu.com/pic3/cover/02/23/10/59b0204bceb65_610.jpg" alt="图片"/>
+        <p>购物车空空如也</p>
+        <router-link tag="button" to='/list/1'>逛一逛</router-link>
     </div>
   </div>
 </template>
@@ -139,7 +138,7 @@ export default {
 };
 </script>
 
-<style  lang="scss">
+<style scoped lang="scss">
 .dlf-cart{
   width:100%;
   height:100%;
@@ -152,14 +151,10 @@ export default {
     padding-left: 14px;
     font-size: 20px;
     text-align: center;
+    position: fixed;
   }
   .dlf-cart-content{
-    .dlf-cart-content-more{
-      width: 100%;
-      height: 200px;
-      text-align: center;
-      line-height: 100px;
-    }
+    padding-top: 64px;
     .dlf-cart-content-detail{
       background: white;
       height:140px;
@@ -235,6 +230,43 @@ export default {
       .dlf-cart-footer-check{
         padding-left: 10px;
         width: 50%;
+        span{
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          padding-left: 20px;
+          position: relative;
+          cursor: pointer;
+        }
+        span:before {
+          content: '';
+          position: absolute;
+          border-radius: 50%;
+          box-sizing: border-box;
+          border: 1px solid rgb(214, 214, 214);
+          width: 23px;
+          height: 23px;
+          left: -6px;
+          top: 4px;
+        }
+        span:after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            box-sizing: border-box;
+            background:#ecdf22;
+            width: 17px;
+            height: 17px;
+            left: -3px;
+            top: 7px;
+            display: none;
+        }
+        input{
+          display: none;
+        }
+        input:checked + span:after {
+            display: block;
+        }
       }
       .dlf-cart-footer-total{
         width:35%;
@@ -249,5 +281,68 @@ export default {
         text-align: center;
       }
     }
+    .dlf-cart-content-none{
+      width: 100%;
+      height: 100%;
+      background: #f5f5f5;
+      text-align: center;
+      padding-top: 170px;
+      img{
+        width: 120px;
+        height: 100px;
+      }
+      p{
+        font-size: 15px;
+        color: #beb9b9;
+        line-height: 40px;
+      }
+      button{
+        width: 100px;
+        height: 40px;
+        border: none;
+        background: #eed268;
+        color: white;
+        font-size: 16px;
+      }
+    }
+  .dlf-cart-content-detail-input{
+    span{
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          padding-left: 20px;
+          position: relative;
+          cursor: pointer;
+        }
+    span:before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: 1px solid rgb(214, 214, 214);
+      width: 23px;
+      height: 23px;
+      left: 0;
+      top: 32px;
+    }
+    span:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background:#ecdf22;
+        width: 17px;
+        height: 17px;
+        left: 3px;
+        top: 35px;
+        display: none;
+    }
+    input{
+      display: none;
+    }
+    input:checked + span:after {
+        display: block;
+    }
+  }
 }
 </style>

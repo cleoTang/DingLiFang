@@ -100,15 +100,18 @@ export default {
     padding-left: 14px;
     font-size: 20px;
     text-align: center;
+    position: fixed;
   }
   .dlf-content{
     width: 100%;
     &-login{
+      margin-top: 64px;
       width: 100%;
       height: 74px;
       background: white;
       line-height: 74px;
       margin-bottom: 10px;
+      position: fixed;
       &-a{
         position: fixed;
         top:64px;
@@ -133,6 +136,7 @@ export default {
     &-list{
       width: 100%;
       height: 150px;
+      margin-top: 148px;
       background: white;
       padding: 0 10px;
       &-title{

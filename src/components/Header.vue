@@ -1,7 +1,7 @@
 <template>
   <div class="dlf-header">
     <div class="dlf-title">顶立方</div>
-    <div class="dlf-input">
+    <div class="dlf-input" @click="toSearch">
       <input  type="text" placeholder="顶立方"/>
     </div>
     <div class="dlf-icon">
@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'headernav',
+  methods: {
+    toSearch(){
+      this.$router.push('/search');
+    },
+  },
 };
 </script>
 
@@ -43,6 +48,7 @@ export default {
       height: 38px;
       padding-left:20px;
       font-size: 15px;
+      outline: none;
     }
   }
   .dlf-icon{

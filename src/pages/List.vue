@@ -61,6 +61,8 @@ export default {
   width: 100%;
   height: 100%;
   background: rgb(240, 239, 239);
+  display: flex;
+  flex-direction: column;
   &-header{
     height: 64px;
     width: 100%;
@@ -69,6 +71,7 @@ export default {
     display: flex;
     padding-left: 14px;
     font-size: 20px;
+    position: fixed;
     span{
       margin-left: 30%;
     }
@@ -78,6 +81,7 @@ export default {
     height: 40px;
     background: white;
     line-height: 40px;
+    margin-top: 64px;
     ul{
       display: flex;
       justify-content: space-around;

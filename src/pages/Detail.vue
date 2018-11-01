@@ -17,9 +17,31 @@
       </p>
     </div>
     <div class="dlf-detail-type">已选：粉色/20寸 </div>
+    <div class="dlf-detail-message">
+      <div class="nav">
+        <mt-button size="small" @click.native.prevent="active = 'tab-container1'">商品详情</mt-button>
+        <mt-button size="small" @click.native.prevent="active = 'tab-container2'">评论</mt-button>
+      </div>
+      <div class="page-tab-container">
+        <mt-tab-container class="page-tabbar-tab-container" v-model="active" swipeable>
+          <mt-tab-container-item id="tab-container1">
+            <div>
+              <img :src='item.img1' alt="">
+              <img :src='item.img2' alt="">
+            </div>
+          </mt-tab-container-item>
+          <mt-tab-container-item id="tab-container2">
+            <div class="img">
+              <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541646376&di=966e3872844391ea11eeffd11212ebd9&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F07%2F85%2F23%2F5933c89eecfff.png" alt='评论'/>
+              <p>暂时还没有评论哦~~~</p>
+            </div>
+          </mt-tab-container-item>
+        </mt-tab-container>
+      </div>
+    </div>
     <div class="dlf-detail-btn">
       <router-link tag='div' to='/cart' class="dlf-detail-icon">
-        <span 
+        <span v-if='todos.length > 0'
         class="dlf-detail-icon-badge"
         >{{todos.length}}</span>
         <i class="icon iconfont icon-cart-normal"></i>
@@ -41,6 +63,7 @@ export default {
   data(){
     return {
       item: {},
+      active: 'tab-container1'
     };
   },
   mounted(){
@@ -65,7 +88,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import '../libs/icon/icon.css';
 .dlf-detail{
   width: 100%;
@@ -79,13 +102,14 @@ export default {
     display: flex;
     padding-left: 14px;
     font-size: 20px;
+    position: fixed;
     span{
       margin-left: 30%;
     }
   }
   &-img{
     width: 100%;
-    height: 200px;
+    height: 264px;
     img{
       width: 100%;
       height: 100%;
@@ -121,6 +145,27 @@ export default {
     padding-left: 20px;
     background: white;
     color: #c0bdbd;
+  }
+  .dlf-detail-message{
+    width: 100%;
+    height: 400px;
+    background: white;
+    z-index: -99;
+    &-title{
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      display: flex;
+      justify-content: space-around;
+      padding: 0 10px;
+      p{
+        padding: 5px 10px;
+        border-bottom: 1px solid;
+      }
+    }
+    &-info{
+      margin-top: 20px;
+    }
   }
   .dlf-detail-btn{
     width: 100%;
@@ -162,6 +207,27 @@ export default {
       width: 40%;
       background: #eed268;
       color: white;
+    }
+  }
+  .item {
+    display: inline-block;
+  }
+  .nav {
+    padding: 10px;
+  }
+  .link {
+    color: inherit;
+    padding: 20px;
+    display: block;
+  }
+  .img{
+    width: 100%;
+    height: 100;
+    text-align: center;
+    img{
+      width: 200px;
+      height: 200px;
+      margin-top: 100px;
     }
   }
 }

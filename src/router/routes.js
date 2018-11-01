@@ -5,6 +5,7 @@ const Mine = () => import('@/pages/Mine');
 const List = () => import('@/pages/List');
 const Detail = () => import('@/pages/Detail');
 const Login = () => import('@/pages/Login');
+const Search = () => import('@/pages/Search');
 
 export default [{
   path: '/',
@@ -48,5 +49,9 @@ export default [{
   path: '/login',
   name: 'login',
   component: Login,
+}, {
+  path: '/search',
+  name: 'search',
+  component: Search,
 },
 ];
