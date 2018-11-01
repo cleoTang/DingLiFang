@@ -54,4 +54,12 @@ export default {
     state.todos = state.todos.filter(item => item.id !== id);
     window.localStorage.setItem('nw-todo', JSON.stringify(state.todos));
   },
+  [types.ADDSEARCHINFO](state, info) {
+    state.search.unshift(info);
+    window.localStorage.setItem('nw-search', JSON.stringify(state.search));
+  },
+  [types.DELETEHISTORY](state) {
+    state.search.splice(0, state.search.length);
+    window.localStorage.setItem('nw-search', JSON.stringify(state.search));
+  },
 };

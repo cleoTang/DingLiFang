@@ -5,5 +5,7 @@ export default {
   LOGIN: 'login',
   SHOWBAGE: 'showbage',
   DELETECART: 'deletecart',
+  ADDSEARCHINFO: 'addSearchInfo',
+  DELETEHISTORY: 'deleteHistory',
 };
 

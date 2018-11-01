@@ -3,57 +3,88 @@
     <div class="dlf-search-header">
       <div class="dlf-search-header-back" @click="toPath">返回</div>
       <div class="dlf-search-header-input">
-        <input ref="searchinput" type="text" placeholder="顶立方"/>
+        <input 
+        ref="searchinput" 
+        type="text" 
+        placeholder="顶立方"
+        v-model="searchInfo"/>
+        <i class="icon iconfont icon-sousuo"></i>
       </div>
-      <div class="dlf-search-header-btn">搜索</div>
+      <div class="dlf-search-header-btn" @click="addClickBtn(searchInfo)">搜索</div>
     </div>
-    <div class="dlf-search-searchHistory search-style">
+    <div class="dlf-search-searchHistory search-style"
+    v-if="hasResult">
       <h2>历史搜索</h2>
       <div>
-        <p>电脑</p>
-        <p>电动牙刷</p>
-        <p>毛毯</p>
-        <p>手机</p>
-        <p>机械键盘</p>
-        <p>手机</p>
-        <p>机械键盘</p>
+        <p v-for='(item, index) in search' :key="index">{{item}}</p>
+      </div>
+      <div class="dlf-search-searchHistory-icon">
+        <i class="icon iconfont icon-lajitong" @click="deleteHistory"></i>
       </div>
     </div>
     <div class="dlf-search-hotSearch search-style">
       <h2>热门搜索</h2>
       <div>
-        <p>电脑</p>
-        <p>电动牙刷</p>
-        <p>毛毯</p>
-        <p>手机</p>
-        <p>机械键盘</p>
-        <p>手机</p>
-        <p>机械键盘</p>
+        <p v-for='item in hotSearch' :key="item.title">{{item.title}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {
+  mapState,
+  mapMutations,
+} from 'vuex';
+
 export default {
   name: 'search',
+  data() {
+    return {
+      hotSearch: [],
+      searchInfo: '',
+    };
+  },
   methods: {
     toPath(){
       this.$router.go('-1');
-    }
+    },
+    ...mapMutations(['addSearchInfo']),
+    ...mapMutations(['deleteHistory']),
+    addClickBtn(info){
+      this.addSearchInfo(info);
+      this.searchInfo='';
+      this.$refs.searchinput.focus();
+      this.$router.push('/list/1');
+    },
   },
   mounted(){
     this.$refs.searchinput.focus();
+    this.$ajax.hotsearch()
+    .then(resp =>{
+      this.hotSearch=resp.data.data;
+    })
+    .catch(err =>{
+      console.log(err);
+    });
+  },
+  computed: {
+    ...mapState(['search']),
+    hasResult() {
+      return this.search.length >0;
+    },
   },
 }
 </script>
 
 <style lang='scss' scoped>
+@import '../libs/icon/icon.css';
 .dlf-search{
   width:100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: rgb(255, 252, 252);
   &-header{
     width:100%;
     height: 64px;
@@ -72,7 +103,7 @@ export default {
         border: none;
         border-radius: 15px;
         height: 38px;
-        padding-left:30px;
+        padding-left:50px;
         font-size: 15px;
         outline: none;
       }
@@ -95,6 +126,20 @@ export default {
         margin: 5px 5px;
       }
     }
+  }
+  .icon-sousuo{
+    position: absolute;
+    top: 1px;
+    left: 23%;
+  }
+  .dlf-search-searchHistory-icon{
+    position: relative;
+  }
+  .icon-lajitong{
+    position: absolute;
+    top: -64px;
+    right: 14px;
+    font-size: 20px;
   }
 }
 </style>

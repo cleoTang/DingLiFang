@@ -3,6 +3,7 @@
     <div class="dlf-title">顶立方</div>
     <div class="dlf-input" @click="toSearch">
       <input  type="text" placeholder="顶立方"/>
+      <i class="icon iconfont icon-sousuo"></i>
     </div>
     <div class="dlf-icon">
       <i class="icon iconfont icon-tixing"></i>
@@ -46,7 +47,7 @@ export default {
       border: none;
       border-radius: 15px;
       height: 38px;
-      padding-left:20px;
+      padding-left:40px;
       font-size: 15px;
       outline: none;
     }
@@ -57,6 +58,11 @@ export default {
       margin-right: 10px;
       font-weight: bolder;
     }
+  }
+  .icon-sousuo{
+    position: absolute;
+    top: 24px;
+    left: 29%;
   }
 }
 </style>

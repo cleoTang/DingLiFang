@@ -15,8 +15,10 @@ ajax.interceptors.response.use((resp) => {
   Indicator.close();
   return resp;
 });
-export const  getMallList = () => {return ajax.get('/hotpot/v1/pt'); };
+export const getMallList = () => { return ajax.get('/hotpot/v1/pt'); };
 
-export const  getDetail = (id) => {return ajax.get(`/hotpot/v1/detail/:${id}`); };
+export const getDetail = (id) => { return ajax.get(`/hotpot/v1/detail/:${id}`); };
 
 export const login1 = params => ajax.post('/hotpot/v1/login', params);
+
+export const hotsearch = () => {return ajax.get('api/v1/hotsearch'); };
