@@ -7,7 +7,7 @@
         ref="searchinput" 
         type="text" 
         placeholder="顶立方"
-        v-model="searchInfo"/>
+        v-model.trim="searchInfo"/>
         <i class="icon iconfont icon-sousuo"></i>
       </div>
       <div class="dlf-search-header-btn" @click="addClickBtn(searchInfo)">搜索</div>
@@ -16,7 +16,11 @@
     v-if="hasResult">
       <h2>历史搜索</h2>
       <div>
-        <p v-for='(item, index) in search' :key="index">{{item}}</p>
+        <router-link 
+        tag='p' 
+        :to='`/list/${item}`'
+        v-for='(item, index) in search' 
+        :key="index">{{item}}</router-link>
       </div>
       <div class="dlf-search-searchHistory-icon">
         <i class="icon iconfont icon-lajitong" @click="deleteHistory"></i>
@@ -25,7 +29,12 @@
     <div class="dlf-search-hotSearch search-style">
       <h2>热门搜索</h2>
       <div>
-        <p v-for='item in hotSearch' :key="item.title">{{item.title}}</p>
+        <router-link 
+        tag='p'
+        :to='`/list/${item.title}`'
+        v-for='item in hotSearch' 
+        :key="item.title">{{item.title}}
+        </router-link>
       </div>
     </div>
   </div>
@@ -52,10 +61,12 @@ export default {
     ...mapMutations(['addSearchInfo']),
     ...mapMutations(['deleteHistory']),
     addClickBtn(info){
-      this.addSearchInfo(info);
-      this.$refs.searchinput.focus();
-      this.$router.push(`/list/${this.searchInfo}`);
-      this.searchInfo='';
+      if(info.length>0){
+        this.addSearchInfo(info);
+        this.$refs.searchinput.focus();
+        this.$router.push(`/list/${this.searchInfo}`);
+        this.searchInfo='';
+      }
     },
   },
   mounted(){

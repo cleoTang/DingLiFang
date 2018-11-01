@@ -42,6 +42,7 @@
           </div>
         </div>
       </div>
+    <div class="kongbai"></div>
     <div class="dlf-cart-footer">
     <label class="dlf-cart-footer-check">
       <input type="checkbox" 
@@ -343,6 +344,10 @@ export default {
     input:checked + span:after {
         display: block;
     }
+  }
+  .kongbai{
+    width: 100%;
+    height: 64px;
   }
 }
 </style>

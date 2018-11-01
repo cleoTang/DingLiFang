@@ -26,18 +26,19 @@ export default {
     });
   },
   [types.ADDTOCART](state, item) {
-    const isInCart = state.todos.some(cartitem => cartitem.id == item.id);
+    console.log(item)
+    const isInCart = state.todos.some(cartitem => cartitem.id == item.item.id);
     if (isInCart) {
       state.todos = state.todos.map((cartitem) => {
-        if (cartitem.id == item.id) {
-          cartitem.count += 1;
+        if (cartitem.id == item.item.id) {
+          cartitem.count += item.num;
         }
         return cartitem;
       });
     } else {
       state.todos = state.todos.concat({
-        ...item,
-        count: 1,
+        ...item.item,
+        count: item.num,
       });
     }
     window.localStorage.setItem('nw-todo', JSON.stringify(state.todos));
@@ -47,8 +48,7 @@ export default {
     state.isLogin = true;
   },
   [types.SHOWBAGE](state, id) {
-    const isBage = state.todos.some(item => item.id == id);
-    return isBage;
+    return state.todos.some(item => item.id == id);
   },
   [types.DELETECART](state, id) {
     state.todos = state.todos.filter(item => item.id !== id);

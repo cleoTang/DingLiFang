@@ -41,13 +41,32 @@
     </div>
     <div class="dlf-detail-btn">
       <router-link tag='div' to='/cart' class="dlf-detail-icon">
-        <span v-if='todos.length > 0'
+        <span v-if='showbage'
         class="dlf-detail-icon-badge"
         >{{todos.length}}</span>
         <i class="icon iconfont icon-cart-normal"></i>
       </router-link>
-      <div class="dlf-detail-add" @click="addClickBtn(item)">加入购物车</div>
+      <div class="dlf-detail-add" @click="addClickBtn()">加入购物车{{showbage}}</div>
       <div class="dlf-detail-buy">立即购买</div>
+      <div class="dlf-addclick" v-if='isshowModule'>
+        <div class='dlf-addclick-img'>
+          <img :src='item.swiper' alt="">
+          <p>
+            <span>￥{{item.price}}</span>
+            <span>库存：50件</span>
+          </p>
+          <div class="cancel" @click="cancel">X</div>
+        </div>
+        <div class='dlf-addclick-number'>
+          <p>数量:</p>
+          <p class="dlf-addclick-number-action">
+            <span class="reduce" @click='reduce'>-</span>
+            <span class="count">{{cartcount}}</span>
+            <span class="add" @click="add">+</span>
+          </p>
+        </div>
+        <div class='dlf-addclick-btn' @click='addtocart1({item,num:cartcount})'>确定</div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,7 +82,10 @@ export default {
   data(){
     return {
       item: {},
-      active: 'tab-container1'
+      active: 'tab-container1',
+      isshowModule: false,
+      cartcount:1,
+      isShowBage:false,
     };
   },
   mounted(){
@@ -81,10 +103,27 @@ export default {
     toPath(){
       this.$router.go('-1');
     },
-    addClickBtn(info){
-      this.addtocart(info);
-      console.log("xxx")
-    }
+    addClickBtn(){
+      this.isshowModule=true;
+    },
+    add(){
+      this.cartcount=this.cartcount +=1;
+    },
+    reduce(){
+      if(this.cartcount<=1){
+        this.cartcount=1;
+      }else{
+        this.cartcount=this.cartcount -=1
+      }
+    },
+    addtocart1(item){
+      this.addtocart(item);
+      this.isshowModule=false;
+      this.cartcount=1;
+    },
+    cancel(){
+      this.isshowModule=false;
+    },
   },
   computed: {
     ...mapState(['todos']),
@@ -233,6 +272,79 @@ export default {
       height: 200px;
       margin-top: 20px;
     }
+  }
+  .dlf-addclick{
+    width: 100%;
+    height: 200px;
+    background: white;
+    position: absolute;
+    border-top: 3px solid #f3db86;
+    left: 0;
+    bottom: 0;
+    padding: 0 10px;
+    &-img{
+      width: 100%;
+      height: 60px;
+      display: flex;
+      margin-top: 20px;
+      p{
+          display: flex;
+          flex-direction: column;
+          height:60px;
+          font-size: 15px;
+          color: #bebebe;
+          span{
+            height: 20px;
+          }
+        }
+      img{
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+      }
+    }
+    &-number{
+      width: 100%;
+      height: 64px;
+      margin-top: 10px;
+      display: flex;
+      p{
+        margin-right: 20px;
+      }
+      &-action{
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #a09e9e;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        span{
+          height: 40px;
+          width: 40px;
+        }
+        .count{
+          border-left: 1px solid #a09e9e;
+          border-right: 1px solid #a09e9e;
+        }
+      }
+    }
+  } 
+  .dlf-addclick-btn{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    background: #eed268;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  .cancel{
+    position: absolute;
+    right:23px;
+    top: 0;
+    color: #d1cece;
   }
 }
 </style>
