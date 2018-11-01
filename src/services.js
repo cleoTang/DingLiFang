@@ -21,4 +21,6 @@ export const getDetail = (id) => { return ajax.get(`/hotpot/v1/detail/:${id}`); 
 
 export const login1 = params => ajax.post('/hotpot/v1/login', params);
 
-export const hotsearch = () => {return ajax.get('api/v1/hotsearch'); };
+export const hotsearch = () => { return ajax.get('/api/v1/hotsearch'); };
+
+export const malllist = () => ajax.get('/hotpot/v1/mall');

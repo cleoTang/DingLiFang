@@ -46,7 +46,7 @@
         >{{todos.length}}</span>
         <i class="icon iconfont icon-cart-normal"></i>
       </router-link>
-      <div class="dlf-detail-add" @click="addtocart(item)">加入购物车</div>
+      <div class="dlf-detail-add" @click="addClickBtn(item)">加入购物车</div>
       <div class="dlf-detail-buy">立即购买</div>
     </div>
   </div>
@@ -80,6 +80,10 @@ export default {
     ...mapMutations(['addtocart','showbage']),
     toPath(){
       this.$router.go('-1');
+    },
+    addClickBtn(info){
+      this.addtocart(info);
+      console.log("xxx")
     }
   },
   computed: {
@@ -227,7 +231,7 @@ export default {
     img{
       width: 200px;
       height: 200px;
-      margin-top: 100px;
+      margin-top: 20px;
     }
   }
 }

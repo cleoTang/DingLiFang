@@ -2,7 +2,7 @@
   <div class="dlf-list">
     <div class="dlf-list-header">
       <P @click="toPath">返回</P>
-      <span>礼品箱包</span>
+      <span>{{title}}</span>
     </div>
     <div class="dlf-list-nav">
       <ul>
@@ -37,6 +37,7 @@ export default {
   data(){
     return {
       todos: [],
+      title: '',
     }
   },
   mounted() {
@@ -47,6 +48,7 @@ export default {
       .catch(err =>{
         console.log(err);
       });
+      this.title=this.$route.params.id;
   },
   methods: {
     toPath(){
@@ -73,7 +75,7 @@ export default {
     font-size: 20px;
     position: fixed;
     span{
-      margin-left: 30%;
+      margin-left: 27%;
     }
   }
   .dlf-list-nav{

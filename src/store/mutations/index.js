@@ -56,6 +56,7 @@ export default {
   },
   [types.ADDSEARCHINFO](state, info) {
     state.search.unshift(info);
+    state.search = Array.from(new Set(state.search));
     window.localStorage.setItem('nw-search', JSON.stringify(state.search));
   },
   [types.DELETEHISTORY](state) {

@@ -5,53 +5,13 @@
       <h2>CATEGORY</h2>
     </div>
     <div class="dlf-mall-content">
-      <router-link tag="p" to='/list/1'>
+      <router-link 
+      tag="p" 
+      :to='`/list/${item.title}`'
+      :key='item.id'
+      v-for='item in malllist'>
         <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
-      </router-link>
-      <router-link tag="p" to='/list/1'>
-        <i class="icon iconfont icon-jiushuishouru"></i>
-        <span>礼品</span>
+        <span>{{item.title}}</span>
       </router-link>
     </div>
     <div class="dlf-mall-img">
@@ -64,6 +24,20 @@
 <script>
 export default {
   name: 'mall',
+  data(){
+    return {
+      malllist: [],
+    };
+  },
+  mounted(){
+    this.$ajax.malllist()
+    .then(resp => {
+      this.malllist=resp.data.data;
+    })
+    .catch(err =>{
+      console.log(err);
+    });
+  },
 };
 </script>
 

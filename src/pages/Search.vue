@@ -53,9 +53,9 @@ export default {
     ...mapMutations(['deleteHistory']),
     addClickBtn(info){
       this.addSearchInfo(info);
-      this.searchInfo='';
       this.$refs.searchinput.focus();
-      this.$router.push('/list/1');
+      this.$router.push(`/list/${this.searchInfo}`);
+      this.searchInfo='';
     },
   },
   mounted(){
