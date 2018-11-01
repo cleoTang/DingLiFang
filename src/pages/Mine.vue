@@ -4,22 +4,25 @@
       <span>我的</span>
     </div>
     <div class="dlf-content">
-      <router-link 
-      to='/login' 
-      tag='div' 
+      <div
       class='dlf-content-login'
       >
         <div v-if='isToken' class='dlf-content-login-a'>
           <p class='dlf-content-login-a-img'>
-            <img src='http://img4.duitang.com/uploads/item/201602/06/20160206025901_JtzEC.thumb.700_0.jpeg' alt="头像"/>
+            <img src='../libs/img/login.jpg' alt="头像"/>
           </p>
-          <p >欢迎登陆~~~~</p>
+          <p >欢迎进入顶立方~~~~</p>
+          <p class="logout" @click="logout()">退出登录</p>
         </div>
-        <div v-else class='dlf-content-login-a'>
+        <router-link 
+        v-else 
+        class='dlf-content-login-a'
+        to='/login' 
+        tag='div'>
           <p class='dlf-content-login-a-img'></p>
           <p >登录/注册</p>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
       <div class="dlf-content-list">
         <div class="dlf-content-list-title">
           <p>我的订单</p>
@@ -71,6 +74,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'mine',
   data() {
@@ -82,7 +86,13 @@ export default {
     isToken() {
       return this.token=window.localStorage.getItem('token');
     },
-  }
+  },
+  methods: {
+    logout(){
+      this.token=window.localStorage.removeItem('token');
+      this.$router.go(0);
+    },
+  },
 };
 </script>
 
@@ -189,5 +199,17 @@ export default {
       }
     }
   } 
+  .logout{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    background: #eed268;
+    color: white;
+    position: absolute;
+    top: 19px;
+    right: -123px;
+  }
 }
 </style>

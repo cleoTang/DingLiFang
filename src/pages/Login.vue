@@ -15,7 +15,7 @@
       placeholder="请输入密码" 
       type="password"></mt-field>
     </div>
-    <div class="dlf-login-btn" @click="login">登录{{isLogin}}</div>
+    <div class="dlf-login-btn" @click="login">登录</div>
     <p class="dlf-login-info">
       <span>忘记密码</span>
       <span>新用户注册</span>
