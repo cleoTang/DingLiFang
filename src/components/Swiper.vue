@@ -1,9 +1,15 @@
 <template>
   <div class="page-swipe">
     <mt-swipe :auto="4000">
-      <mt-swipe-item class="slide1">1</mt-swipe-item>
-      <mt-swipe-item class="slide2">2</mt-swipe-item>
-      <mt-swipe-item class="slide3">3</mt-swipe-item>
+      <mt-swipe-item class="slide1">
+        <img src="../libs/img/44.jpg" alt="">
+      </mt-swipe-item>
+      <mt-swipe-item class="slide2">
+        <img src="../libs/img/22.jpg" alt="">
+      </mt-swipe-item>
+      <mt-swipe-item class="slide3">
+        <img src="../libs/img/33.jpg" alt="">
+      </mt-swipe-item>
     </mt-swipe>
   </div>
 </template>
@@ -28,17 +34,9 @@ export default {
       }
       .mint-swipe-item {
         line-height: 200px;
-      }
-      .slide1 {
-        background-color: #0089dc;
-        color: #fff;
-      }
-      .slide2 {
-        background-color: #ffd705;
-        color: #000;
-      }
-      .slide3 {
-        background-color: #ff2d4b;
-        color: #fff;
+        img{
+          height: 100%;
+          width: 100%;
+        }
       }
 </style>

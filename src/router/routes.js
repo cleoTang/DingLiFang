@@ -6,6 +6,7 @@ const List = () => import('@/pages/List');
 const Detail = () => import('@/pages/Detail');
 const Login = () => import('@/pages/Login');
 const Search = () => import('@/pages/Search');
+const Init = () => import('@/pages/Init');
 
 export default [{
   path: '/',

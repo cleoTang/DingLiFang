@@ -5,8 +5,9 @@
       <P @click="toPath">返回</P>
       <span>商品详情</span>
     </div>
+    <div class="none"></div>
     <div class="dlf-detail-img">
-      <img :src='item.swiper' alt="图片"/>
+      <img :src="item.swiper" alt="">
     </div>
     <div class="dlf-detail-desc">
       <h1>{{item.title}}</h1>
@@ -152,10 +153,10 @@ export default {
   }
   &-img{
     width: 100%;
-    height: 264px;
+    height: 200px;
     img{
       width: 100%;
-      height: 100%;
+      height: 200px;
     }
   }
   .dlf-detail-desc{
@@ -345,6 +346,10 @@ export default {
     right:23px;
     top: 0;
     color: #d1cece;
+  }
+  .none{
+    width: 100%;
+    height: 64px;
   }
 }
 </style>

@@ -4,6 +4,7 @@
       <P @click="toPath">返回</P>
       <span>{{title}}</span>
     </div>
+    <div class='none'></div>
     <div class="dlf-list-nav">
       <ul>
         <li>销量</li>
@@ -84,6 +85,7 @@ export default {
     background: white;
     line-height: 40px;
     margin-top: 64px;
+    position: fixed;
     ul{
       display: flex;
       justify-content: space-around;
@@ -128,5 +130,6 @@ export default {
       }
     }
   }
+  .none{height:104px;}
 }
 </style>

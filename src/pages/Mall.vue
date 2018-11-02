@@ -15,7 +15,7 @@
       </router-link>
     </div>
     <div class="dlf-mall-img">
-      <p></p>
+      <p><img src="../libs/img/55.jpg" alt=""></p>
     </div>
     <router-view></router-view>
   </div>
@@ -86,6 +86,10 @@ export default {
     p{
       height:100px;
       background: #ebe373;
+      img{
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
